@@ -456,3 +456,33 @@ local Button = Tab:CreateButton({
 end
    end,
 })
+
+local Tab = Window:CreateTab("Teleports", 4483362458) -- Title, Image
+
+local Button = Tab:CreateButton({
+   Name = "Teleport to the Bank",
+   Callback = function()
+   local teleportPosition = Vector3.new(-374.35, 22.16, -338.99)
+
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+
+if character and character:FindFirstChild("HumanoidRootPart") then
+    character.HumanoidRootPart.CFrame = CFrame.new(teleportPosition)
+end
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Teleport to the Club",
+   Callback = function()
+   local teleportPosition = Vector3.new(-264.72, 0.94, -421.26)
+
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+
+if character and character:FindFirstChild("HumanoidRootPart") then
+    character.HumanoidRootPart.CFrame = CFrame.new(teleportPosition)
+end
+   end,
+})
