@@ -486,3 +486,34 @@ if character and character:FindFirstChild("HumanoidRootPart") then
 end
    end,
 })
+
+local Tab = Window:CreateTab("Cash", 4483362458) -- Title, Image
+
+local Button = Tab:CreateButton({
+   Name = "Cash Drops",
+   Callback = function()
+   local function sendNotification(content)
+    Rayfield:Notify({
+        Title = "Dropped Cash Found!",
+        Content = content,
+        Duration = 6.5,
+        Image = 4483362458,
+    })
+end
+
+local function findDroppedCash()
+    for _, obj in pairs(workspace:GetChildren()) do
+        if obj:IsA("Part") and obj:FindFirstChild("BillboardGui") then
+            local pos = obj.Position
+            local cashMessage = string.format("Cash at X: %.2f | Y: %.2f | Z: %.2f", pos.X, pos.Y, pos.Z)
+            sendNotification(cashMessage)
+            wait(3) -- Prevent spam
+        end
+    end
+end
+
+while wait(5) do
+    findDroppedCash()
+end
+   end,
+})
